@@ -115,10 +115,11 @@ getVersion() {
 }
 
 showBlockheights() {
+  clear=$2
   if [ "$1" == "MAINNET" ]; then
-    nodes="${nodesMainnet[@]} $2"
+    nodes="${nodesMainnet[@]} $3"
   elif [ "$1" == "TESTNET" ]; then
-    nodes="${nodesTestnet[@]} $2"
+    nodes="${nodesTestnet[@]} $3"
   elif [ "$1" == "ARGUMENTS" ]; then
     nodes=$2
   fi
@@ -194,7 +195,5 @@ showBlockheights() {
   printf "\n"
 }
 
-clear
-showBlockheights "MAINNET" "$@"
-showBlockheights "TESTNET" "$@"
-
+showBlockheights "MAINNET" true "$@"
+showBlockheights "TESTNET" false "$@"
