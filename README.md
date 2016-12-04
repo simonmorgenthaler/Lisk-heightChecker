@@ -13,6 +13,10 @@ The scrips will maybe need some seconds to show the results, please be patient.
 
 ## Usage
 1. Execute the script with ./heightChecker.sh
+2. If you want to update it continuously you can use a command similar to this one:
+```
+while true ; do ./heightChecker.sh ; sleep 10 ; done
+```
 
 If you like this script, please vote for my delegate 'cc001' 6787154358850114730L Thanks!
 
