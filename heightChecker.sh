@@ -151,6 +151,10 @@ showBlockheights() {
     maxVersion=${sorted[$i]}
   done
 
+  if [[ "$clear" == true ]]; then
+    clear
+  fi
+
   printf "${YELLOW}------------------- $1 BLOCKHEIGHTS --------------------${NC}\n"
   printf "${GREEN}%-*s%*d  %-*s${NC}\n" $textcol "Highest block and version:" $numcol "$maxHeight" $versioncol "$maxVersion"
   printf "${YELLOW}%0.s-${NC}" $(seq 1 $(expr $textcol + $numcol + $versioncol + 1))
