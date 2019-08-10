@@ -91,11 +91,11 @@ findmax() {
 }
 
 getHeight() {
-  answer=`curl -s --connect-timeout $connectTimeout "$1/api/loader/status/sync" | grep "height"`
+  answer=`curl -s --connect-timeout $connectTimeout "$1/api/node/status" | grep "height"`
   if [ -z $1 ]; then
     height=""
   elif [ ! -z $answer ]; then
-    height=`echo $answer | jq '.height'`
+    height=`echo $answer | jq '.data.height'`
   else
     height="$stringNA"
   fi
@@ -103,11 +103,11 @@ getHeight() {
 }
 
 getVersion() {
-  answer=`curl -s --connect-timeout $connectTimeout "$1/api/peers/version" | grep "version"`
+  answer=`curl -s --connect-timeout $connectTimeout "$1/api/node/constants" | grep "version"`
   if [ -z $1 ]; then
     version=""
   elif [ ! -z "$answer" ]; then
-    version=`echo $answer | jq '.version' | cut -d '"' -f 2 `
+    version=`echo $answer | jq '.data.version' | cut -d '"' -f 2 `
   else
     version="$stringNA"    
   fi
